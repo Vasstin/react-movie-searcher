@@ -8,30 +8,40 @@ import CardMedia from '@material-ui/core/CardMedia';
 //import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+
+
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 400,
+    margin: 15
+  },
+  cardArea: {
+    display: "flex",
+    flexDirection: 'column'
   },
   media: {
-    height: 140,
+    minHeight: 500,
+    width: 400
   },
 });
 
 
-const Actors = props => {
+
+const NewCard = props => {
   const classes = useStyles();
 
+  console.log(props)
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea className = {classes.cardArea}>
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
+          image = {'https://image.tmdb.org/t/p/w500/' + props.cardImage}
+          title={props.title}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Lizard
+            {props.title}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -39,4 +49,4 @@ const Actors = props => {
   );
 };
 
-export default Actors;
+export default NewCard;

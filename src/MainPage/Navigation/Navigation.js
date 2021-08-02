@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 //import IconButton from '@material-ui/core/IconButton';
@@ -56,34 +56,16 @@ const useStyles = makeStyles((theme) => ({
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
     width: '100%',
-    // [theme.breakpoints.up('sm')]: {
-    //   width: '12ch',
-    //   '&:focus': {
-    //     width: '20ch',
-    //   },
-    // },
+    
   },
 }));
 
 const Navigation = props => {
   const classes = useStyles();
-  // const test = []
-  // useEffect(() => {
-  //   fetch('https://api.themoviedb.org/3/movie/550?api_key=1fe2b672392f0b598d63021cfed3b95e')
-  //   .then(results => results.json())
-  //   .then(test )
-  // })
-  useEffect(() => {
-    fetch('https://api.themoviedb.org/3/movie/popular?api_key=1fe2b672392f0b598d63021cfed3b95e&language=en-US&page=1')
-      .then(results => results.json())
-      .then(data => {
-        console.log(data)
-      });
-  }, []);
+  
 
   return (
     <div className={classes.root}>
