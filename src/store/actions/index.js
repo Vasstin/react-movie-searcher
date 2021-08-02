@@ -1,7 +1,9 @@
 export {
-  fetchMovies
+  fetchMovies,
+  cleanMovies
 } from './movies'
 
 export {
-  fetchActors
+  fetchActors,
+  cleanActors
 } from './actors'

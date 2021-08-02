@@ -12,17 +12,13 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 400,
+    maxWidth: 325,
     margin: 15
   },
   cardArea: {
     display: "flex",
-    flexDirection: 'column'
-  },
-  media: {
-    minHeight: 500,
-    width: 400
-  },
+    flexDirection: 'column',
+  } 
 });
 
 
@@ -30,12 +26,13 @@ const useStyles = makeStyles({
 const NewCard = props => {
   const classes = useStyles();
 
-  console.log(props)
   return (
     <Card className={classes.root}>
       <CardActionArea className = {classes.cardArea}>
         <CardMedia
-          className={classes.media}
+          // className={classes.media}
+          height="500"
+          component = 'img'
           image = {'https://image.tmdb.org/t/p/w500/' + props.cardImage}
           title={props.title}
         />

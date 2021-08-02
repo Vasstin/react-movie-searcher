@@ -27,10 +27,14 @@ const Cards = React.memo(props => {
   })
 
   const onFetchMovies = useCallback(() => dispatch(actions.fetchMovies()), [dispatch])
+  const onCleanMovies = useCallback(() => dispatch(actions.cleanMovies()), [dispatch])
 
   useEffect(() => {
     onFetchMovies()
-  }, [onFetchMovies]);
+    return  () => {
+      onCleanMovies()
+    }
+  }, [onFetchMovies, onCleanMovies]);
 
   return (
     <div className = {classes.root}>

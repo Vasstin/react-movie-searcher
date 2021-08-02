@@ -27,11 +27,16 @@ const Cards = React.memo(props => {
   })
 
   const onFetchActors = useCallback(() => dispatch(actions.fetchActors()), [dispatch])
+  const onCleanActors = useCallback(() => dispatch(actions.cleanActors()), [dispatch])
 
   useEffect(() => {
     onFetchActors()
-  }, [onFetchActors]);
+    return  () => {
+      onCleanActors()
+    }
+  }, [onFetchActors, onCleanActors]);
 
+ 
   return (
     <div className = {classes.root}>
       {actors.map(item => {
