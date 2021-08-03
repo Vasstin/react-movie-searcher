@@ -7,6 +7,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 //import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom'
+
 
 
 
@@ -18,6 +20,10 @@ const useStyles = makeStyles({
   cardArea: {
     display: "flex",
     flexDirection: 'column',
+  }, 
+  link: {
+    textDecoration: "none",
+    color: 'inherit'
   } 
 });
 
@@ -28,20 +34,25 @@ const NewCard = props => {
 
   return (
     <Card className={classes.root}>
+    <Link className = {classes.link} to = {{
+      pathname: '/actorcard',
+      state: {id: props.personid}
+    }}>
       <CardActionArea className = {classes.cardArea}>
         <CardMedia
-          // className={classes.media}
           height="500"
           component = 'img'
           image = {'https://image.tmdb.org/t/p/w500/' + props.cardImage}
           title={props.title}
         />
         <CardContent>
+          
           <Typography gutterBottom variant="h5" component="h2">
             {props.title}
           </Typography>
         </CardContent>
       </CardActionArea>
+    </Link>
     </Card>
   );
 };

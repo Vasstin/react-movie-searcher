@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
+
 import NewCard from './NewCard';
 import * as actions from '../../store/actions/index'
 
@@ -20,6 +21,7 @@ const useStyles = makeStyles({
 
 const Cards = React.memo(props => {
   const classes = useStyles();
+
   const dispatch = useDispatch()
 
   const actors = useSelector(state => {
@@ -36,7 +38,14 @@ const Cards = React.memo(props => {
     }
   }, [onFetchActors, onCleanActors]);
 
- 
+  // const fetchPerson = (id) => {
+  //   tmdbUrl.get(`person/${id}?api_key=1fe2b672392f0b598d63021cfed3b95e&language=en-US`)
+  //   .then(results => {
+  //     const res = results.data
+  //     }
+  //     ) 
+  // }
+  
   return (
     <div className = {classes.root}>
       {actors.map(item => {
@@ -44,7 +53,9 @@ const Cards = React.memo(props => {
           data = {item} 
           title = {item.name} 
           cardImage = {item.profile_path} 
-          key = {item.id}/>
+          key = {item.id}
+          personid = {item.id}
+          ></NewCard>
         })
       }
     </div>

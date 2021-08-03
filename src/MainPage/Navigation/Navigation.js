@@ -70,7 +70,7 @@ const Navigation = props => {
   return (
     <div className={classes.root}>
       <AppBar position="static">
-      <p className = {classes.titleText}>The Movie Searcher is here!</p>
+      <p className = {classes.titleText} >The Movie Searcher is here!</p>
         <Toolbar className = {classes.navBar}>
           <ul className = {classes.navList}>
           <NavigationItem link = "/actors">ACTORS</NavigationItem>

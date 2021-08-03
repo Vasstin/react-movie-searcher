@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Navigation from './Navigation/Navigation';
 import Movies from './Cards/Movies';
 import Actors from './Cards/Actors';
+import ActorCard from './Cards/ActorCard'
 
 const MainPage = props => {
   return ( 
@@ -15,6 +16,7 @@ const MainPage = props => {
         </Route>
         <Route path = '/actors' component = {Actors}></Route>
         <Route path = '/movies' component = {Movies}></Route>
+        <Route path = '/actorcard' component = {ActorCard}></Route>
       </Switch>
     </div>
     

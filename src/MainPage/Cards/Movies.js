@@ -43,7 +43,8 @@ const Cards = React.memo(props => {
         data = {item} 
         title = {item.title} 
         cardImage = {item.poster_path} 
-        key = {item.id}/>
+        key = {item.id}
+        personid = {item.id}/>
         })
       }
     </div>
