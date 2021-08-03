@@ -55,7 +55,7 @@ const Cards = React.memo(props => {
           cardImage = {item.profile_path} 
           key = {item.id}
           personid = {item.id}
-          ></NewCard>
+          />
         })
       }
     </div>
