@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
+import { useHistory } from 'react-router-dom'
 
 import NewCard from '../NewCard';
 import * as actions from '../../../store/actions/index'
@@ -31,19 +32,19 @@ const Cards = React.memo(props => {
   const onFetchActors = useCallback(() => dispatch(actions.fetchActors()), [dispatch])
   const onCleanActors = useCallback(() => dispatch(actions.cleanActors()), [dispatch])
 
+  let history = useHistory();
+
+  function handleClick(id) {
+    history.push("/actorcard", {id});
+  }
+
   useEffect(() => {
     onFetchActors()
     return  () => {
       onCleanActors()
     }
   }, [onFetchActors, onCleanActors]);
-  // const fetchPerson = (id) => {
-  //   tmdbUrl.get(`person/${id}?api_key=1fe2b672392f0b598d63021cfed3b95e&language=en-US`)
-  //   .then(results => {
-  //     const res = results.data
-  //     }
-  //     ) 
-  // }
+ 
   
   return (
     <div className = {classes.root}>
@@ -54,6 +55,7 @@ const Cards = React.memo(props => {
           cardImage = {item.profile_path} 
           key = {item.id}
           personid = {item.id}
+          redirect = {() => handleClick(item.id)}
           />
         })
       }

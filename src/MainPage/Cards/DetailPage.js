@@ -2,12 +2,10 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import tmdbUrl from '../../utility/axios'
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 325,
@@ -29,28 +27,20 @@ const DetailPage = props => {
       <CardActionArea>
         <CardMedia
           component="img"
-          // alt={props.name}
+          alt={props.name ?? props.title}
           height="400"
-          // image={'https://image.tmdb.org/t/p/w500/' + props.cardImage}
-          // title={props.name}
+          image={`https://image.tmdb.org/t/p/w500/${props.movieImage ?? props.actorImage}`}
+          title={props.name}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-          {/* {props.name} */}
+            {props.name ?? props.title}
           </Typography>
           <Typography variant="body2" color="inherit" component="p">
-            {/* {props.bio} */}
+            {props.bio ?? props.overview}
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
     </Card>
   )
 };

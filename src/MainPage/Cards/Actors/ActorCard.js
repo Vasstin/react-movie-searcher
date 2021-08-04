@@ -14,7 +14,7 @@ const ActorCard = props => {
   })
   
   const { id } = props.location.state
-  const onFetchActorCard = useCallback(() => dispatch(actions.fetchActorCard(id)), [dispatch])
+  const onFetchActorCard = useCallback(() => dispatch(actions.fetchActorCard(id)), [dispatch, id])
   const onCleanActorCard = useCallback(() => dispatch(actions.cleanActorCard()), [dispatch])
 
   useEffect(() => {
@@ -23,10 +23,11 @@ const ActorCard = props => {
       onCleanActorCard()
     }
   }, [onFetchActorCard, onCleanActorCard])
+
   return (
     <DetailPage 
       name = {actorCard.name}
-      cardImage = {actorCard.profile_path} 
+      actorImage = {actorCard.profile_path} 
       bio = {actorCard.biography}
     />
   );

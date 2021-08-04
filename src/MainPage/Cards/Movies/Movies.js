@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import NewCard from '../NewCard';
 import * as actions from '../../../store/actions/index'
@@ -43,8 +43,8 @@ const Cards = React.memo(props => {
   
   let history = useHistory();
 
-  function handleClick() {
-    history.push("/moviecard");
+  function handleClick(id) {
+    history.push("/moviecard", {id});
   }
   return (
     <div className = {classes.root}>
@@ -56,7 +56,7 @@ const Cards = React.memo(props => {
           // }}>
             <NewCard 
               data = {item} 
-              title = {item.title ?? item.name} 
+              title = {item.title} 
               cardImage = {item.poster_path} 
               key = {item.id}
               personid = {item.id}

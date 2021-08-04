@@ -51,7 +51,6 @@ export function fetchMovieCard(id) {
     tmdbUrl.get(`movie/${id}?${apiKey}&language=en-US`)
       .then(results => {
         const res = results.data;
-        console.log(res)
         dispatch(setMovieCard(res))
       })
   }

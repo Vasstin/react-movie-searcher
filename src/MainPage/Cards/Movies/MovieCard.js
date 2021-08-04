@@ -12,20 +12,21 @@ const MovieCard = props => {
   const movieCard = useSelector(state => {
     return state.movies.movieCard
   })
+  const { id } = props.location.state
+  const onFetchMovieCard = useCallback(() => dispatch(actions.fetchMovieCard(id)), [dispatch, id])
+  const onCleanMovieCard = useCallback(() => dispatch(actions.cleanMovieCard()), [dispatch])
   console.log(props)
-  // const { id } = props.location.state
-  // const onFetchMovieCard = useCallback(() => dispatch(actions.fetchMovieCard(id)), [dispatch])
-  // const onCleanMovieCard = useCallback(() => dispatch(actions.cleanMovieCard()), [dispatch])
-  
-  // useEffect(() => {
-  //   onFetchMovieCard()
-  //   return  () => {
-  //     onCleanMovieCard()
-  //   }
-  // }, [onFetchMovieCard, onCleanMovieCard])
+  useEffect(() => {
+    onFetchMovieCard()
+    return  () => {
+      onCleanMovieCard()
+    }
+  }, [onFetchMovieCard, onCleanMovieCard])
   return (
     <DetailPage 
-      
+      title = {movieCard.title} 
+      movieImage = {movieCard.poster_path}
+      overview = {movieCard.overview}
     />
   );
 };

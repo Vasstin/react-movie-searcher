@@ -7,7 +7,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 //import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles({
   root: {
@@ -28,6 +27,7 @@ const useStyles = makeStyles({
 
 const NewCard = props => {
   const classes = useStyles();
+  console.log(props)
   return (
     <Card className={classes.root} onClick = {() => props.redirect()}>
       {/* <Link className = {classes.link} to = {{
