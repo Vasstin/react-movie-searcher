@@ -1,5 +1,7 @@
 import * as actionTypes from './actionTypes';
-import tmdbUrl from '../../axios';
+import tmdbUrl from '../../utility/axios';
+import apiKey from '../../utility/apiKey';
+
 
 // tmdbUrl.get('movie/popular?api_key=1fe2b672392f0b598d63021cfed3b95e&language=en-US&page=1')
 //       .then(results => {
@@ -26,6 +28,31 @@ export function fetchMovies() {
       .then(results => {
         const res = results.data.results;
         dispatch(setMovies(res))
+      })
+  }
+}
+
+export function setMovieCard(movieId) {
+  return {
+    type: actionTypes.SET_MOVIE_CARD,
+    payload: movieId
+  }
+}
+
+export function cleanMovieCard(clean = []) {
+  return {
+    type: actionTypes.CLEAN_MOVIE_CARD,
+    payload: clean
+  }
+} 
+
+export function fetchMovieCard(id) {
+  return dispatch => {
+    tmdbUrl.get(`movie/${id}?${apiKey}&language=en-US`)
+      .then(results => {
+        const res = results.data;
+        console.log(res)
+        dispatch(setMovieCard(res))
       })
   }
 }

@@ -9,8 +9,6 @@ import App from './App';
 import moviesReducer from './store/reducers/moviesReducer';
 import actorsReducer from './store/reducers/actorsReducer';
 
-
-
 const rootReducer = combineReducers({
   movies: moviesReducer,
   actors: actorsReducer

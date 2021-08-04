@@ -2,8 +2,8 @@ import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 
-import NewCard from './NewCard';
-import * as actions from '../../store/actions/index'
+import NewCard from '../NewCard';
+import * as actions from '../../../store/actions/index'
 
 
 //изменить на moviesContainer
@@ -37,7 +37,6 @@ const Cards = React.memo(props => {
       onCleanActors()
     }
   }, [onFetchActors, onCleanActors]);
-
   // const fetchPerson = (id) => {
   //   tmdbUrl.get(`person/${id}?api_key=1fe2b672392f0b598d63021cfed3b95e&language=en-US`)
   //   .then(results => {
@@ -51,7 +50,7 @@ const Cards = React.memo(props => {
       {actors.map(item => {
         return <NewCard 
           data = {item} 
-          title = {item.name} 
+          title = {item.title ?? item.name} 
           cardImage = {item.profile_path} 
           key = {item.id}
           personid = {item.id}

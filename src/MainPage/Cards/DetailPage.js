@@ -7,11 +7,16 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import tmdbUrl from '../../axios'
+import tmdbUrl from '../../utility/axios'
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 325,
+    margin: 15
   },
+  cardArea: {
+    display: "flex",
+    flexDirection: 'column',
+  }
 });
 
 
@@ -24,18 +29,17 @@ const DetailPage = props => {
       <CardActionArea>
         <CardMedia
           component="img"
-          // alt={actorCard.name}
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
-          // title={actorCard.name}
+          // alt={props.name}
+          height="400"
+          // image={'https://image.tmdb.org/t/p/w500/' + props.cardImage}
+          // title={props.name}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-          {/* {actorCard.name} */}
+          {/* {props.name} */}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
+          <Typography variant="body2" color="inherit" component="p">
+            {/* {props.bio} */}
           </Typography>
         </CardContent>
       </CardActionArea>

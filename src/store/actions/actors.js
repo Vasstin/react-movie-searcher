@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
-import tmdbUrl from '../../axios';
+import tmdbUrl from '../../utility/axios';
+import apiKey from '../../utility/apiKey';
 
 export function setActors(actors) {
   return {
@@ -15,12 +16,37 @@ export function cleanActors(clean = []) {
   }
 } 
 
+
 export function fetchActors() {
   return dispatch => {
-    tmdbUrl.get('person/popular?api_key=1fe2b672392f0b598d63021cfed3b95e&language=en-US&page=1')
+    tmdbUrl.get(`person/popular?${apiKey}&language=en-US&page=1`)
       .then(results => {
         const res = results.data.results;
         dispatch(setActors(res))
+      })
+  }
+}
+
+export function setActorCard(actorInf) {
+  return {
+    type: actionTypes.SET_ACTOR_CARD,
+    payload: actorInf
+  }
+}
+
+export function cleanActorCard(clean = []) {
+  return {
+    type: actionTypes.CLEAN_ACTOR_CARD,
+    payload: clean
+  }
+} 
+
+export function fetchActorCard(id) {
+  return dispatch => {
+    tmdbUrl.get(`person/${id}?${apiKey}&language=en-US`)
+      .then(results => {
+        const res = results.data;
+        dispatch(setActorCard(res))
       })
   }
 }

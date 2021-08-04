@@ -28,13 +28,12 @@ const useStyles = makeStyles({
 
 const NewCard = props => {
   const classes = useStyles();
-
   return (
-    <Card className={classes.root}>
-      <Link className = {classes.link} to = {{
-        pathname: '/actorcard',
+    <Card className={classes.root} onClick = {() => props.redirect()}>
+      {/* <Link className = {classes.link} to = {{
+        pathname: '/card',
         state: {id: props.personid}
-      }}>
+      }}> */}
         <CardActionArea className = {classes.cardArea}>
           <CardMedia
             height="500"
@@ -48,7 +47,7 @@ const NewCard = props => {
             </Typography>
           </CardContent>
         </CardActionArea>
-      </Link>
+      {/* </Link> */}
     </Card>
   );
 };
