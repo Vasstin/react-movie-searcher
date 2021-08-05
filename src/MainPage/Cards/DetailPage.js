@@ -8,12 +8,22 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 325,
-    margin: 15
+    margin: 15,
   },
   cardArea: {
     display: "flex",
-    flexDirection: 'column',
+    width: '100%',
+    height: 550,
+    
+  },
+  media: {
+    maxWidth: 325,
+    height: 500,
+    margin: 15,
+    borderRadius: 5
+  }, 
+  content: {
+    alignSelf: 'flex-start'
   }
 });
 
@@ -23,16 +33,17 @@ const DetailPage = props => {
   const classes = useStyles();
 
   return ( 
-    <Card className={classes.root}>
-      <CardActionArea>
+    <Card className={classes.root} >
+      <CardActionArea className = {classes.cardArea} >
         <CardMedia
+          className = {classes.media}
           component="img"
           alt={props.name ?? props.title}
-          height="400"
           image={`https://image.tmdb.org/t/p/w500/${props.movieImage ?? props.actorImage}`}
           title={props.name}
+          
         />
-        <CardContent>
+        <CardContent className = {classes.content}>
           <Typography gutterBottom variant="h5" component="h2">
             {props.name ?? props.title}
           </Typography>

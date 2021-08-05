@@ -15,7 +15,7 @@ const MovieCard = props => {
   const { id } = props.location.state
   const onFetchMovieCard = useCallback(() => dispatch(actions.fetchMovieCard(id)), [dispatch, id])
   const onCleanMovieCard = useCallback(() => dispatch(actions.cleanMovieCard()), [dispatch])
-  console.log(props)
+
   useEffect(() => {
     onFetchMovieCard()
     return  () => {
@@ -27,6 +27,7 @@ const MovieCard = props => {
       title = {movieCard.title} 
       movieImage = {movieCard.poster_path}
       overview = {movieCard.overview}
+      background = {movieCard.backdrop_path}
     />
   );
 };

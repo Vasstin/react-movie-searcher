@@ -50,18 +50,14 @@ const Cards = React.memo(props => {
     <div className = {classes.root}>
       {movies.map(item => {
         return (
-          // <Link className = {classes.link} to = {{
-          //   pathname: '/moviecard',
-          //   state: {id: item.id}
-          // }}>
             <NewCard 
               data = {item} 
               title = {item.title} 
               cardImage = {item.poster_path} 
               key = {item.id}
               personid = {item.id}
-              redirect = {() => handleClick(item.id)} />)
-        // </Link> )
+              redirect = {() => handleClick(item.id)} 
+              releaseDate = {item.release_date}/>)
         })
       }
     </div>
