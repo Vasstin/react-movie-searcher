@@ -22,12 +22,21 @@ export function cleanMovies(clean = []) {
   }
 }
 
-export function fetchMovies() {
+export function setTotalPages(pages) {
+  return {
+    type: actionTypes.SET_TOTAL_MOVIES_PAGES,
+    payload: pages
+  }
+}
+
+export function fetchMovies(page) {
   return dispatch => {
-    tmdbUrl.get('movie/popular?api_key=1fe2b672392f0b598d63021cfed3b95e&language=en-US&page=1')
+    tmdbUrl.get(`movie/popular?${apiKey}&language=en-US&page=${page}`)
       .then(results => {
-        const res = results.data.results;
+        const res = results.data.results ;
+        const totalPages  = results.data.total_pages
         dispatch(setMovies(res))
+        dispatch(setTotalPages(totalPages))
       })
   }
 }

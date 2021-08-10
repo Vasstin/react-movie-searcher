@@ -2,7 +2,8 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   movies: [],
-  movieCard: []
+  movieCard: [],
+  totalPages: ''
 }
 
 const moviesReducer = (state = initialState, action) => {
@@ -15,6 +16,8 @@ const moviesReducer = (state = initialState, action) => {
       return { ...state, movieCard: action.payload}
     case actionTypes.CLEAN_MOVIE_CARD:
       return { ...state, movieCard: action.payload}
+    case actionTypes.SET_TOTAL_MOVIES_PAGES:
+      return { ...state, totalPages: action.payload}
     default: return state
   }
 }

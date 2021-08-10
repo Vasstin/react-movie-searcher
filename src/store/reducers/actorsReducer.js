@@ -2,7 +2,8 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   actors: [],
-  actorCard: []
+  actorCard: [],
+  totalPages: ''
 }
 
 const actorsReducer = (state = initialState, action) => {
@@ -15,6 +16,8 @@ const actorsReducer = (state = initialState, action) => {
       return { ...state, actorCard: action.payload}
     case actionTypes.CLEAN_ACTOR_CARD:
       return { ...state, actorCard: action.payload}
+    case actionTypes.SET_TOTAL_ACTORS_PAGES:
+      return { ...state, totalPages: action.payload}
     default: return state
   }
 }

@@ -17,11 +17,21 @@ export function cleanActors(clean = []) {
 } 
 
 
-export function fetchActors() {
+export function setTotalPages(pages) {
+  return {
+    type: actionTypes.SET_TOTAL_ACTORS_PAGES,
+    payload: pages
+  }
+}
+
+
+export function fetchActors(page) {
   return dispatch => {
-    tmdbUrl.get(`person/popular?${apiKey}&language=en-US&page=1`)
+    tmdbUrl.get(`person/popular?${apiKey}&language=en-US&page=${page}`)
       .then(results => {
         const res = results.data.results;
+        const totalPages  = results.data.total_pages
+        dispatch(setTotalPages(totalPages))
         dispatch(setActors(res))
       })
   }
