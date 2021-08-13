@@ -2,10 +2,10 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
-import Pagination from '@material-ui/lab/Pagination';
 
 import NewCard from '../NewCard';
 import * as actions from '../../../store/actions/index'
+import PagePagination from '../../../utility/PagePagination'
 
 
 //изменить на moviesContainer
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 const Cards = React.memo(props => {
   const classes = useStyles();
 
-  const [page, setPage] = useState(localStorage.getItem('ActorsPage'));
+  const [page, setPage] = useState(1);
   
   const handleChange = (event, value) => {
     setPage(value);
@@ -60,7 +60,6 @@ const Cards = React.memo(props => {
 
   useEffect(() => {
     onFetchActors()
-    localStorage.setItem('ActorsPage', page)
 
     return  () => {
       onCleanActors()
@@ -81,7 +80,12 @@ const Cards = React.memo(props => {
           />
         })
       }
-      <Pagination className = {classes.pagination}   count={pages}  handleChange = {handleChange}/>
+      <PagePagination 
+        className={classes.pagination} 
+        page = {page} 
+        count={pages} 
+        changer = {handleChange} 
+      />
     </div>
    
   )

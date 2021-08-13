@@ -12,19 +12,17 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Pag = props => {
+const PagePagination = props => {
   const classes = useStyles()
   return (
     <div className = {classes.root} >
       <Pagination 
-        
         page = {props.page} 
         count={props.count} 
         onChange = {props.changer} />
-
     </div>
   )
 
 };
 
-export default Pag;
+export default PagePagination;

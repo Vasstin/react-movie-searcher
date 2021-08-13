@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 import NewCard from '../NewCard';
 import * as actions from '../../../store/actions/index'
-import Pag from './Pagination'
+import PagePagination from '../../../utility/PagePagination'
 
 //изменить на moviesContainer
 
@@ -36,7 +36,7 @@ const Cards = React.memo(props => {
   const classes = useStyles();
   const dispatch = useDispatch()
 
-  const [page, setPage] = useState(localStorage.getItem('MoviesPage'));
+  const [page, setPage] = useState(1);
 
   const handleChange = (event, value) => {
     setPage(value);
@@ -56,7 +56,7 @@ const Cards = React.memo(props => {
 
   useEffect(() => {
     onFetchMovies(page)
-    localStorage.setItem('MoviesPage', page)
+  
 
     return  () => {
       onCleanMovies()
@@ -83,7 +83,12 @@ const Cards = React.memo(props => {
               releaseDate = {item.release_date}/>)
         })
       }
-      <Pag className={classes.pagination} page = {page} count={pages} changer = {handleChange} />
+      <PagePagination 
+        className={classes.pagination} 
+        page = {page} 
+        count={pages} 
+        changer = {handleChange} 
+      />
     </div>
    
   )
