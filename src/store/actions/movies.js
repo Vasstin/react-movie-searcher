@@ -29,6 +29,8 @@ export function setTotalPages(pages) {
   }
 }
 
+
+
 export function fetchMovies(page) {
   return dispatch => {
     tmdbUrl.get(`movie/popular?${apiKey}&language=en-US&page=${page}`)

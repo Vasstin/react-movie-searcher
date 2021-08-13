@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 import Pagination from '@material-ui/lab/Pagination';
 
 import NewCard from '../NewCard';
@@ -31,6 +31,7 @@ const Cards = React.memo(props => {
   const classes = useStyles();
 
   const [page, setPage] = useState(localStorage.getItem('ActorsPage'));
+  
   const handleChange = (event, value) => {
     setPage(value);
   };
@@ -80,7 +81,7 @@ const Cards = React.memo(props => {
           />
         })
       }
-      <Pagination className = {classes.pagination}   count={pages} onChange = {handleChange} />
+      <Pagination className = {classes.pagination}   count={pages}  handleChange = {handleChange}/>
     </div>
    
   )

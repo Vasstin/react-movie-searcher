@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory} from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
-import Pagination from '@material-ui/lab/Pagination';
+import { useHistory } from 'react-router-dom';
 
 import NewCard from '../NewCard';
 import * as actions from '../../../store/actions/index'
-
+import Pag from './Pagination'
 
 //изменить на moviesContainer
 
@@ -38,6 +37,7 @@ const Cards = React.memo(props => {
   const dispatch = useDispatch()
 
   const [page, setPage] = useState(localStorage.getItem('MoviesPage'));
+
   const handleChange = (event, value) => {
     setPage(value);
   };
@@ -83,7 +83,7 @@ const Cards = React.memo(props => {
               releaseDate = {item.release_date}/>)
         })
       }
-      <Pagination className={classes.pagination} count={pages} onChange = {handleChange} />
+      <Pag className={classes.pagination} page = {page} count={pages} changer = {handleChange} />
     </div>
    
   )

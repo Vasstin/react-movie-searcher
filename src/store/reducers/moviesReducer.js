@@ -3,7 +3,8 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
   movies: [],
   movieCard: [],
-  totalPages: ''
+  totalPages: '',
+  currentPage: ''
 }
 
 const moviesReducer = (state = initialState, action) => {
