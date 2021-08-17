@@ -16,3 +16,4 @@ export const FETCH_MOVIE_CARD = 'FETCH_MOVIE_CARD';
 export const SET_MOVIE_CARD = 'SET_MOVIE_CARD';
 export const CLEAN_MOVIE_CARD = 'CLEAN_MOVIE_CARD';
 
+export const SEARCH_VALUE = 'SEARCH_VALUE'

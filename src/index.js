@@ -8,10 +8,12 @@ import './index.css';
 import App from './App';
 import moviesReducer from './store/reducers/moviesReducer';
 import actorsReducer from './store/reducers/actorsReducer';
+// import searchReducer from './store/reducers/searchReducers';
 
 const rootReducer = combineReducers({
   movies: moviesReducer,
-  actors: actorsReducer
+  actors: actorsReducer,
+  // search: searchReducer
 })
 
 const store = createStore(

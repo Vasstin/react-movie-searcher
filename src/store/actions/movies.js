@@ -66,3 +66,38 @@ export function fetchMovieCard(id) {
       })
   }
 }
+
+// export function searchValue (value) {
+//   return {
+//     type: actionTypes.SEARCH_VALUE,
+//     payload: value
+//   }
+// }
+
+export function searchMovies(value, page) {
+  console.log(page)
+  if (value !=='') {
+    return dispatch => {
+      tmdbUrl.get(`https://api.themoviedb.org/3/search/movie?${apiKey}&query=${value}`)
+        .then(results => {
+          const res = results.data.results ;
+          // const totalPages  = results.data.total_pages
+          dispatch(cleanMovies())
+          dispatch(setMovies(res))
+          // dispatch(setTotalPages(totalPages))
+        })
+    }
+  } else {
+    return dispatch => {
+      tmdbUrl.get(`movie/popular?${apiKey}&language=en-US&page=${page}`)
+        .then(results => {
+          const res = results.data.results ;
+          const totalPages  = results.data.total_pages
+          dispatch(cleanMovies())
+          dispatch(setMovies(res))
+          dispatch(setTotalPages(totalPages))
+        })
+    }
+  }
+  
+}

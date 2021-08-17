@@ -31,7 +31,6 @@ const DetailPage = props => {
   // if (text.length > 100) {
   //   text = 'working'
   // }
-  console.log(props)
   return ( 
     <Card className={classes.root}>
       <CardMedia

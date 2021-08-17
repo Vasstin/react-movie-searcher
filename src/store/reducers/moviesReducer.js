@@ -4,7 +4,8 @@ const initialState = {
   movies: [],
   movieCard: [],
   totalPages: '',
-  currentPage: ''
+  currentPage: '',
+  search: ''
 }
 
 const moviesReducer = (state = initialState, action) => {
@@ -19,6 +20,8 @@ const moviesReducer = (state = initialState, action) => {
       return { ...state, movieCard: action.payload}
     case actionTypes.SET_TOTAL_MOVIES_PAGES:
       return { ...state, totalPages: action.payload}
+    case actionTypes.SEARCH_VALUE:
+      return { ...state, search: action.payload}
     default: return state
   }
 }

@@ -2,7 +2,9 @@ export {
   fetchMovies,
   fetchMovieCard,
   cleanMovies,
-  cleanMovieCard
+  cleanMovieCard,
+  // searchValue,
+  searchMovies
 } from './movies'
 
 export {
@@ -11,3 +13,8 @@ export {
   cleanActors,
   cleanActorCard
 } from './actors'
+
+// export {
+//   searchValue,
+//   searchMovies
+// } from './search'

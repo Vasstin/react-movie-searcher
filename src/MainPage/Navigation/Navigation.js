@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useCallback} from 'react';
+import { useDispatch } from 'react-redux';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 //import IconButton from '@material-ui/core/IconButton';
@@ -8,6 +9,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { alpha, makeStyles } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import NavigationItem from './NavigationItem/NavigationItem';
+import * as actions from '../../store/actions/index'
 
 const useStyles = makeStyles((theme) => ({
   
@@ -66,7 +68,13 @@ const useStyles = makeStyles((theme) => ({
 const Navigation = props => {
   const classes = useStyles();
   
+  // const search = useSelector((state) => {
+  //   return state.movies.search
+  // })
 
+  // const dispatch = useDispatch()
+
+  // const onSearch = useCallback((value) => dispatch(actions.searchValue(value)), [dispatch])
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -87,6 +95,7 @@ const Navigation = props => {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
+              // onChange = {(event) => onSearch(event.target.value)}
             />
           </div>
         </Toolbar>

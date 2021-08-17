@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
+import InputBase from '@material-ui/core/InputBase';
 
 import NewCard from '../NewCard';
 import * as actions from '../../../store/actions/index'
@@ -45,26 +46,39 @@ const Cards = React.memo(props => {
     return state.movies.totalPages
   })
 
-  const onFetchMovies = useCallback(() => dispatch(actions.fetchMovies(page)), [dispatch, page])
-  const onCleanMovies = useCallback(() => dispatch(actions.cleanMovies()), [dispatch])
+  const search = useSelector(state => {
+    return state.movies.search
+  })
 
+  const onFetchMovies = useCallback(() => dispatch(actions.fetchMovies(page)), [dispatch, page])
+  const onSearchMovies = useCallback((value) => dispatch(actions.searchMovies(value, page)), [dispatch])
+  const onCleanMovies = useCallback(() => dispatch(actions.cleanMovies()), [dispatch])
+  
   useEffect(() => {
     onFetchMovies(page)
-  
 
     return  () => {
       onCleanMovies()
     }
   }, [onFetchMovies, onCleanMovies, page]);
-  
+
   let history = useHistory();
 
   function handleClick(id) {
     history.push("/moviecard", {id});
   }
-
-   return (
+   
+    return (
      <div>
+       <InputBase
+              placeholder="Search…"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              inputProps={{ 'aria-label': 'search' }}
+              onChange = {(event) => onSearchMovies(event.target.value)}
+            />
        <div className = {classes.root}>
          {movies.map(item => {
            return (
