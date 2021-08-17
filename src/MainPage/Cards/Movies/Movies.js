@@ -22,12 +22,6 @@ const useStyles = makeStyles((theme) => ({
   link: {
     textDecoration: "none",
     color: 'inherit'
-  },
-  pagination: {
-    '& > *': {
-      marginTop: theme.spacing(2),
-      marginBottom: theme.spacing(2)
-    },
   }
 }));
 
@@ -70,27 +64,27 @@ const Cards = React.memo(props => {
   }
 
    return (
-    <div className = {classes.root}>
-      {movies.map(item => {
-        return (
-            <NewCard 
-              data = {item} 
-              title = {item.title} 
-              cardImage = {item.poster_path} 
-              key = {item.id}
-              personid = {item.id}
-              redirect = {() => handleClick(item.id)} 
-              releaseDate = {item.release_date}/>)
-        })
-      }
-      <PagePagination 
-        className={classes.pagination} 
-        page = {page} 
-        count={pages} 
-        changer = {handleChange} 
-      />
-    </div>
-   
+     <div>
+       <div className = {classes.root}>
+         {movies.map(item => {
+           return (
+              <NewCard 
+                data = {item} 
+                title = {item.title} 
+                cardImage = {item.poster_path} 
+                key = {item.id}
+                personid = {item.id}
+                redirect = {() => handleClick(item.id)} 
+              />)
+           })
+         }
+       </div>
+       <PagePagination 
+         page = {page} 
+         count={pages} 
+         changer = {handleChange} 
+       />
+     </div>
   )
 });
 

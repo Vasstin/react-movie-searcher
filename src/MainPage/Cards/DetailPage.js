@@ -31,6 +31,7 @@ const DetailPage = props => {
   // if (text.length > 100) {
   //   text = 'working'
   // }
+  console.log(props)
   return ( 
     <Card className={classes.root}>
       <CardMedia
@@ -44,6 +45,9 @@ const DetailPage = props => {
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
           {props.name ?? props.title}
+        </Typography>
+        <Typography gutterBottom variant="h6" component="p">
+          {props.birthday ?? props.releaseDate}
         </Typography>
         <Typography variant="body2" color="inherit" component="p">
           {props.bio ?? props.overview}

@@ -17,12 +17,6 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     height: 140,
-  },
-  pagination: {
-    '& > *': {
-      marginTop: theme.spacing(2),
-      marginBottom: theme.spacing(2)
-    }
   }
 }));
 
@@ -68,26 +62,27 @@ const Cards = React.memo(props => {
  
   
   return (
-    <div className = {classes.root}>
-      {actors.map(item => {
-        return <NewCard 
-          data = {item} 
-          title = {item.title ?? item.name} 
-          cardImage = {item.profile_path} 
-          key = {item.id}
-          personid = {item.id}
-          redirect = {() => handleClick(item.id)}
-          />
-        })
-      }
+    <div>
+      <div className = {classes.root}>
+        {actors.map(item => {
+          return <NewCard 
+            data = {item} 
+            title = {item.title ?? item.name} 
+            cardImage = {item.profile_path} 
+            key = {item.id}
+            personid = {item.id}
+            redirect = {() => handleClick(item.id)}
+            />
+          })
+        }
+        
+      </div>
       <PagePagination 
-        className={classes.pagination} 
         page = {page} 
         count={pages} 
         changer = {handleChange} 
       />
-    </div>
-   
+  </div>
   )
 });
 

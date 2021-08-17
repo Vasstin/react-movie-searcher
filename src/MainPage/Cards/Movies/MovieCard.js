@@ -28,6 +28,7 @@ const MovieCard = props => {
       movieImage = {movieCard.poster_path}
       overview = {movieCard.overview}
       background = {movieCard.backdrop_path}
+      releaseDate = {movieCard.release_date}
     />
   );
 };

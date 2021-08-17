@@ -29,6 +29,7 @@ const ActorCard = props => {
       name = {actorCard.name}
       actorImage = {actorCard.profile_path} 
       bio = {actorCard.biography}
+      birthday = {actorCard.birthday}
     />
   );
 };
