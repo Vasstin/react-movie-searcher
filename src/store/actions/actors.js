@@ -34,7 +34,7 @@ export function fetchActors(page) {
         dispatch(setTotalPages(totalPages))
         dispatch(setActors(res))
       })
-  }
+    }
 }
 
 export function setActorCard(actorInf) {
@@ -58,5 +58,31 @@ export function fetchActorCard(id) {
         const res = results.data;
         dispatch(setActorCard(res))
       })
+  }
+}
+
+export function searchActors(value, page) {
+  if (value !=='') {
+    return dispatch => {
+        tmdbUrl.get(`search/person?${apiKey}&query=${value}`)
+        .then(results => {
+          const res = results.data.results ;
+          // const totalPages  = results.data.total_pages
+          dispatch(cleanActors())
+          dispatch(setActors(res))
+        })
+   
+    }
+  } else {
+    return dispatch => {
+      tmdbUrl.get(`person/popular?${apiKey}&language=en-US&page=${page}`)
+        .then(results => {
+          const res = results.data.results;
+          const totalPages  = results.data.total_pages
+          dispatch(cleanActors())
+          dispatch(setActors(res))
+          dispatch(setTotalPages(totalPages))
+      })
+    }
   }
 }

@@ -1,11 +1,10 @@
-import React, { useCallback} from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
+import { withRouter } from "react-router";
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-//import IconButton from '@material-ui/core/IconButton';
-//import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
-//import MenuIcon from '@material-ui/icons/Menu';
 import { alpha, makeStyles } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import NavigationItem from './NavigationItem/NavigationItem';
@@ -67,14 +66,17 @@ const useStyles = makeStyles((theme) => ({
 
 const Navigation = props => {
   const classes = useStyles();
+  const dispatch = useDispatch()
+
+  const onSearchMovies = useCallback((value) => dispatch(actions.searchMovies(value)), [dispatch])
+  const onSearchActors = useCallback((value) => dispatch(actions.searchActors(value)), [dispatch])
   
-  // const search = useSelector((state) => {
-  //   return state.movies.search
-  // })
+  // if(props.location.pathname === '/actors') {
+  //   onSearch = useCallback((value) => dispatch(actions.searchActors(value)), [dispatch])
+  // } else if(props.location.pathname === '/movies') {
+  //   onSearch = useCallback((value) => dispatch(actions.searchMovies(value)), [dispatch])
+  // }
 
-  // const dispatch = useDispatch()
-
-  // const onSearch = useCallback((value) => dispatch(actions.searchValue(value)), [dispatch])
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -95,7 +97,8 @@ const Navigation = props => {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
-              // onChange = {(event) => onSearch(event.target.value)}
+              onChange = {(props.location.pathname === '/actors') ? (event) => onSearchActors(event.target.value) : (event) => onSearchMovies(event.target.value) }
+              // onChange = {(event) => onSearchActors(event.target.value)}
             />
           </div>
         </Toolbar>
@@ -104,4 +107,4 @@ const Navigation = props => {
   );
 }
 
-export default Navigation;
+export default withRouter(Navigation);

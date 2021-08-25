@@ -2,11 +2,11 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
-import InputBase from '@material-ui/core/InputBase';
 
 import NewCard from '../NewCard';
 import * as actions from '../../../store/actions/index'
 import PagePagination from '../../../utility/PagePagination'
+// import Navigation from '../../Navigation/Navigation'
 
 //изменить на moviesContainer
 
@@ -46,13 +46,13 @@ const Cards = React.memo(props => {
     return state.movies.totalPages
   })
 
-  const search = useSelector(state => {
-    return state.movies.search
-  })
+  // const search = useSelector(state => {
+  //   return state.movies.search
+  // })
 
   const onFetchMovies = useCallback(() => dispatch(actions.fetchMovies(page)), [dispatch, page])
-  const onSearchMovies = useCallback((value) => dispatch(actions.searchMovies(value, page)), [dispatch])
   const onCleanMovies = useCallback(() => dispatch(actions.cleanMovies()), [dispatch])
+  // const onSearchMovies = useCallback((value) => dispatch(actions.searchMovies(value)), [dispatch])
   
   useEffect(() => {
     onFetchMovies(page)
@@ -67,18 +67,8 @@ const Cards = React.memo(props => {
   function handleClick(id) {
     history.push("/moviecard", {id});
   }
-   
     return (
      <div>
-       <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-              onChange = {(event) => onSearchMovies(event.target.value)}
-            />
        <div className = {classes.root}>
          {movies.map(item => {
            return (

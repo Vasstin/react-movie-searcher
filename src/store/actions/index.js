@@ -3,7 +3,6 @@ export {
   fetchMovieCard,
   cleanMovies,
   cleanMovieCard,
-  // searchValue,
   searchMovies
 } from './movies'
 
@@ -11,7 +10,8 @@ export {
   fetchActors,
   fetchActorCard,
   cleanActors,
-  cleanActorCard
+  cleanActorCard,
+  searchActors
 } from './actors'
 
 // export {

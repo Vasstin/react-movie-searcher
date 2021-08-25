@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import NewCard from '../NewCard';
 import * as actions from '../../../store/actions/index'
 import PagePagination from '../../../utility/PagePagination'
+// import Navigation from '../../Navigation/Navigation'
 
 
 //изменить на moviesContainer
@@ -60,9 +61,9 @@ const Cards = React.memo(props => {
     }
   }, [onFetchActors, onCleanActors, page]);
  
-  
   return (
     <div>
+      {/* <Navigation /> */}
       <div className = {classes.root}>
         {actors.map(item => {
           return <NewCard 

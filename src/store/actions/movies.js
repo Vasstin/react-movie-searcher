@@ -75,17 +75,16 @@ export function fetchMovieCard(id) {
 // }
 
 export function searchMovies(value, page) {
-  console.log(page)
   if (value !=='') {
     return dispatch => {
-      tmdbUrl.get(`https://api.themoviedb.org/3/search/movie?${apiKey}&query=${value}`)
+        tmdbUrl.get(`search/movie?${apiKey}&query=${value}`)
         .then(results => {
           const res = results.data.results ;
           // const totalPages  = results.data.total_pages
           dispatch(cleanMovies())
           dispatch(setMovies(res))
-          // dispatch(setTotalPages(totalPages))
         })
+   
     }
   } else {
     return dispatch => {

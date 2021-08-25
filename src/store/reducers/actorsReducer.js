@@ -3,7 +3,9 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
   actors: [],
   actorCard: [],
-  totalPages: ''
+  totalPages: '',
+  currentPage: '',
+  search: ''
 }
 
 const actorsReducer = (state = initialState, action) => {
@@ -18,6 +20,8 @@ const actorsReducer = (state = initialState, action) => {
       return { ...state, actorCard: action.payload}
     case actionTypes.SET_TOTAL_ACTORS_PAGES:
       return { ...state, totalPages: action.payload}
+    case actionTypes.SEARCH_VALUE:
+      return { ...state, search: action.payload}
     default: return state
   }
 }

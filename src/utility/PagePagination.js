@@ -19,8 +19,8 @@ const PagePagination = props => {
   return (
     <div className = {classes.root} >
       <Pagination 
-        page = {props.page} 
-        count={props.count} 
+        page = {+props.page} 
+        count={+props.count} 
         onChange = {props.changer} />
     </div>
   )
