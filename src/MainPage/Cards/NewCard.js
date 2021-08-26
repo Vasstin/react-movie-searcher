@@ -20,7 +20,10 @@ const useStyles = makeStyles({
   link: {
     textDecoration: "none",
     color: 'inherit'
-  } 
+  },
+  cardMedia: {
+    width: '325px'
+  }
 });
 
 
@@ -31,8 +34,8 @@ const NewCard = props => {
   return (
     <Card className={classes.root} onClick = {() => props.redirect()}>
         <CardActionArea className = {classes.cardArea}>
-          <CardMedia
-            height="500"
+          <CardMedia className = {classes.cardMedia}
+            height = "500"
             component = 'img'
             image = {'https://image.tmdb.org/t/p/w500/' + props.cardImage}
             title={props.title}

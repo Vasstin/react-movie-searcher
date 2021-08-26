@@ -65,7 +65,7 @@ const Cards = React.memo(props => {
   let history = useHistory();
 
   function handleClick(id) {
-    history.push("/moviecard", {id});
+    history.push("/movies/" + id, {id});
   }
     return (
      <div>

@@ -98,7 +98,6 @@ const Navigation = props => {
               }}
               inputProps={{ 'aria-label': 'search' }}
               onChange = {(props.location.pathname === '/actors') ? (event) => onSearchActors(event.target.value) : (event) => onSearchMovies(event.target.value) }
-              // onChange = {(event) => onSearchActors(event.target.value)}
             />
           </div>
         </Toolbar>

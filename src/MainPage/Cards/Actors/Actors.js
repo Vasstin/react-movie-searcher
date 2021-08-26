@@ -50,7 +50,7 @@ const Cards = React.memo(props => {
   let history = useHistory();
 
   function handleClick(id) {
-    history.push("/actorcard", {id});
+    history.push("/actors/" + id, {id});
   }
 
   useEffect(() => {

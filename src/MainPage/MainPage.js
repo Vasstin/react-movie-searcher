@@ -15,10 +15,10 @@ const MainPage = props => {
         <Route exact path = '/'>
           <Redirect to = '/movies'></Redirect>
         </Route>
+        <Route path = '/actors/:id' component = {ActorCard}></Route>
+        <Route path = '/movies/:id' component = {MovieCard}></Route>
         <Route path = '/actors' component = {Actors}></Route>
         <Route path = '/movies' component = {Movies}></Route>
-        <Route path = '/actorcard' component = {ActorCard}></Route>
-        <Route path = '/moviecard' component = {MovieCard}></Route>
       </Switch>
     </div>
     
