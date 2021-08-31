@@ -71,6 +71,11 @@ const Navigation = props => {
   const onSearchMovies = useCallback((value) => dispatch(actions.searchMovies(value)), [dispatch])
   const onSearchActors = useCallback((value) => dispatch(actions.searchActors(value)), [dispatch])
   
+  const pathes = {
+    '/actors': (event) => onSearchActors(event.target.value),
+    '/movies': (event) => onSearchMovies(event.target.value)
+  }
+  
   // if(props.location.pathname === '/actors') {
   //   onSearch = useCallback((value) => dispatch(actions.searchActors(value)), [dispatch])
   // } else if(props.location.pathname === '/movies') {
@@ -97,7 +102,7 @@ const Navigation = props => {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
-              onChange = {(props.location.pathname === '/actors') ? (event) => onSearchActors(event.target.value) : (event) => onSearchMovies(event.target.value) }
+              onChange = {pathes[props.location.pathname]}
             />
           </div>
         </Toolbar>

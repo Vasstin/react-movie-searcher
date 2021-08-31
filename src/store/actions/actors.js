@@ -27,13 +27,13 @@ export function setTotalPages(pages) {
 
 export function fetchActors(page) {
   return dispatch => {
-    tmdbUrl.get(`person/popular?${apiKey}&language=en-US&page=${page}`)
-      .then(results => {
-        const res = results.data.results;
-        const totalPages  = results.data.total_pages
-        dispatch(setTotalPages(totalPages))
-        dispatch(setActors(res))
-      })
+      tmdbUrl.get(`person/popular?${apiKey}&language=en-US&page=${page}`)
+        .then(results => {
+          const res = results.data.results;
+          const totalPages  = results.data.total_pages
+          dispatch(setTotalPages(totalPages))
+          dispatch(setActors(res))
+        })
     }
 }
 

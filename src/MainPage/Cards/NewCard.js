@@ -7,6 +7,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 //import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Skeleton from '@material-ui/lab/Skeleton';
+
 
 const useStyles = makeStyles({
   root: {
@@ -26,20 +28,30 @@ const useStyles = makeStyles({
   }
 });
 
+const imgPath = 'https://image.tmdb.org/t/p/w500/';
 
+/*<Skeleton variant="rect" width={325} height={500} className={classes.root} /> */
 
 const NewCard = props => {
   const classes = useStyles();
   
+  let cardMedia = (
+    <CardMedia className = {classes.cardMedia}
+      height = "500"
+      component = 'img'
+      image = {imgPath + props.cardImage}
+      title={props.title}
+    />
+  )
+
+  if(props.cardImage === null) {
+    cardMedia = <Skeleton variant="rect" width={325} height={500} className={classes.cardMedia} />
+  }
+  
   return (
     <Card className={classes.root} onClick = {() => props.redirect()}>
         <CardActionArea className = {classes.cardArea}>
-          <CardMedia className = {classes.cardMedia}
-            height = "500"
-            component = 'img'
-            image = {'https://image.tmdb.org/t/p/w500/' + props.cardImage}
-            title={props.title}
-          />
+          {cardMedia}
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               {props.title}
