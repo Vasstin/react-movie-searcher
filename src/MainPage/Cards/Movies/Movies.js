@@ -5,7 +5,9 @@ import { useHistory } from 'react-router-dom';
 
 import NewCard from '../NewCard';
 import * as actions from '../../../store/actions/index'
-import PagePagination from '../../../utility/PagePagination'
+import PagePagination from '../../../utility/PagePagination';
+import Spinner from '../../../utility/Spinner'
+
 // import Navigation from '../../Navigation/Navigation'
 
 //изменить на moviesContainer
@@ -55,8 +57,10 @@ const Cards = React.memo(props => {
   // const onSearchMovies = useCallback((value) => dispatch(actions.searchMovies(value)), [dispatch])
   
   useEffect(() => {
-    onFetchMovies(page)
-
+    setTimeout(() => {
+      onFetchMovies(page)
+    }, 1000)
+    
     return  () => {
       onCleanMovies()
     }
@@ -67,9 +71,10 @@ const Cards = React.memo(props => {
   function handleClick(id) {
     history.push("/movies/" + id, {id});
   }
-    return (
-     <div>
-       <div className = {classes.root}>
+
+  let moviesMap = (
+    <div>
+      <div className = {classes.root}>
          {movies.map(item => {
            return (
               <NewCard 
@@ -88,6 +93,15 @@ const Cards = React.memo(props => {
          count={pages} 
          changer = {handleChange} 
        />
+    </div>
+  )
+
+  if(movies.length  === 0) {
+    moviesMap = <Spinner/>
+  } 
+    return (
+     <div>
+       {moviesMap}
      </div>
   )
 });

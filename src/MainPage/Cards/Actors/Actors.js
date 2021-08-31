@@ -5,7 +5,8 @@ import { useHistory } from 'react-router-dom';
 
 import NewCard from '../NewCard';
 import * as actions from '../../../store/actions/index'
-import PagePagination from '../../../utility/PagePagination'
+import PagePagination from '../../../utility/PagePagination';
+import Spinner from '../../../utility/Spinner'
 // import Navigation from '../../Navigation/Navigation'
 
 
@@ -18,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     height: 140,
+  },
+  spinner: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 }));
 
@@ -54,36 +60,45 @@ const Cards = React.memo(props => {
   }
 
   useEffect(() => {
-    onFetchActors()
-
+    setTimeout(() => {
+      onFetchActors(page)
+    }, 1000)
+    
     return  () => {
       onCleanActors()
     }
   }, [onFetchActors, onCleanActors, page]);
- 
-  return (
+
+  let actorsMap = (
     <div>
-      {/* <Navigation /> */}
       <div className = {classes.root}>
         {actors.map(item => {
           return <NewCard 
-            data = {item} 
-            title = {item.title ?? item.name} 
-            cardImage = {item.profile_path} 
-            key = {item.id}
-            personid = {item.id}
-            redirect = {() => handleClick(item.id)}
-            />
-          })
-        }
-        
+          data = {item} 
+          title = {item.title ?? item.name} 
+          cardImage = {item.profile_path} 
+          key = {item.id}
+          personid = {item.id}
+          redirect = {() => handleClick(item.id)}
+        />
+      })}
       </div>
-      <PagePagination 
-        page = {page} 
-        count={pages} 
-        changer = {handleChange} 
-      />
-  </div>
+        <PagePagination 
+          page = {page} 
+          count={pages} 
+          changer = {handleChange} 
+        />
+      </div>
+  )
+
+  if(actors.length  === 0) {
+    actorsMap = <Spinner/>
+  } 
+
+  return (
+    <div>
+      {actorsMap}
+    </div>
   )
 });
 
