@@ -1,0 +1,10 @@
+export const FETCH_MOVIES = 'FETCH_MOVIES';
+export const SET_MOVIES = 'SET_MOVIES';
+export const CLEAN_MOVIES = 'CLEAN_MOVIES';
+export const SET_TOTAL_MOVIES_PAGES = 'SET_TOTAL_MOVIES_PAGES';
+
+export const FETCH_MOVIE_CARD = 'FETCH_MOVIE_CARD';
+export const SET_MOVIE_CARD = 'SET_MOVIE_CARD';
+export const CLEAN_MOVIE_CARD = 'CLEAN_MOVIE_CARD';
+
+export const SEARCH_VALUE = 'SEARCH_VALUE'

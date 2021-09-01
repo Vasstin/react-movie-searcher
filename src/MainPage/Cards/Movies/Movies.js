@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 
 import NewCard from '../NewCard';
-import * as actions from '../../../store/actions/index'
+import * as actions from '../../../store/movies/actions/index'
 import PagePagination from '../../../utility/PagePagination';
 import Spinner from '../../../utility/Spinner'
 
@@ -52,8 +52,8 @@ const Cards = React.memo(props => {
   //   return state.movies.search
   // })
 
-  const onFetchMovies = useCallback(() => dispatch(actions.fetchMovies(page)), [dispatch, page])
-  const onCleanMovies = useCallback(() => dispatch(actions.cleanMovies()), [dispatch])
+  const onFetchMovies = useCallback(() => dispatch(actions.initFetchMovies()), [dispatch, page])
+  // const onCleanMovies = useCallback(() => dispatch(actions.cleanMovies()), [dispatch])
   // const onSearchMovies = useCallback((value) => dispatch(actions.searchMovies(value)), [dispatch])
   
   useEffect(() => {
@@ -61,10 +61,10 @@ const Cards = React.memo(props => {
       onFetchMovies(page)
     }, 1000)
     
-    return  () => {
-      onCleanMovies()
-    }
-  }, [onFetchMovies, onCleanMovies, page]);
+    // return  () => {
+    //   onCleanMovies()
+    // }
+  }, [onFetchMovies, /*onCleanMovies,*/ page]);
 
   let history = useHistory();
 
