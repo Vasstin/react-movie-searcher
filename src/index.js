@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import createSagaMiddleware from 'redux-saga'
 import thunk from 'redux-thunk'
+
+import { helloSaga } from './store/sagas'
 import './index.css';
 import App from './App';
 import moviesReducer from './store/reducers/moviesReducer';
 import actorsReducer from './store/reducers/actorsReducer';
-// import searchReducer from './store/reducers/searchReducers';
 
 const rootReducer = combineReducers({
   movies: moviesReducer,
@@ -21,10 +23,13 @@ const composeEnhancers =
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     : null || compose;
 
+const sagaMiddleware = createSagaMiddleware();
+  
 const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(thunk))
+  composeEnhancers(applyMiddleware(sagaMiddleware)) 
 )
+sagaMiddleware.run(helloSaga)
 
 const app = (
   <Provider store = {store}>
