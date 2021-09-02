@@ -14,14 +14,14 @@ const moviesReducer = (state = initialState, action) => {
       return { ...state, movies: [...state.movies, ...action.payload]}
     case actionTypes.CLEAN_MOVIES:
       return { ...state, movies: action.payload}
-    // case actionTypes.SET_MOVIE_CARD:
-    //   return { ...state, movieCard: action.payload}
-    // case actionTypes.CLEAN_MOVIE_CARD:
-    //   return { ...state, movieCard: action.payload}
-    // case actionTypes.SET_TOTAL_MOVIES_PAGES:
-    //   return { ...state, totalPages: action.payload}
-    // case actionTypes.SEARCH_VALUE:
-    //   return { ...state, search: action.payload}
+    case actionTypes.SET_MOVIE_CARD:
+      return { ...state, movieCard: action.payload}
+    case actionTypes.CLEAN_MOVIE_CARD:
+      return { ...state, movieCard: action.payload}
+    case actionTypes.SET_TOTAL_MOVIES_PAGES:
+      return { ...state, totalPages: action.payload}
+    case actionTypes.SEARCH_VALUE:
+      return { ...state, search: action.payload}
     default: return state
   }
 }

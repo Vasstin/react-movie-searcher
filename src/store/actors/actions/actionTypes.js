@@ -1,8 +1,3 @@
-export const FETCH_MOVIES = 'FETCH_MOVIES';
-export const SET_MOVIES = 'SET_MOVIES';
-export const CLEAN_MOVIES = 'CLEAN_MOVIES';
-export const SET_TOTAL_MOVIES_PAGES = 'SET_TOTAL_MOVIES_PAGES';
-
 export const FETCH_ACTORS = 'FETCH_ACTORS';
 export const SET_ACTORS = 'SET_ACTORS';
 export const CLEAN_ACTORS = 'CLEAN_ACTORS'
@@ -12,8 +7,6 @@ export const FETCH_ACTOR_CARD = 'FETCH_ACTOR_CARD';
 export const SET_ACTOR_CARD = 'SET_ACTOR_CARD';
 export const CLEAN_ACTOR_CARD = 'CLEAN_ACTOR_CARD';
 
-export const FETCH_MOVIE_CARD = 'FETCH_MOVIE_CARD';
-export const SET_MOVIE_CARD = 'SET_MOVIE_CARD';
-export const CLEAN_MOVIE_CARD = 'CLEAN_MOVIE_CARD';
 
+export const INIT_SEARCH_ACTORS = 'INIT_SEARCH_ACTORS'
 export const SEARCH_VALUE = 'SEARCH_VALUE'

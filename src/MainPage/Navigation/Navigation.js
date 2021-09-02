@@ -8,7 +8,8 @@ import InputBase from '@material-ui/core/InputBase';
 import { alpha, makeStyles } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import NavigationItem from './NavigationItem/NavigationItem';
-import * as actions from '../../store/actions/index'
+import * as actionsMovies from '../../store/movies/actions/index';
+import * as actionsActors from '../../store/actors/actions/index';
 
 const useStyles = makeStyles((theme) => ({
   
@@ -68,8 +69,8 @@ const Navigation = props => {
   const classes = useStyles();
   const dispatch = useDispatch()
 
-  const onSearchMovies = useCallback((value) => dispatch(actions.searchMovies(value)), [dispatch])
-  const onSearchActors = useCallback((value) => dispatch(actions.searchActors(value)), [dispatch])
+  const onSearchMovies = useCallback((value) => dispatch(actionsMovies.initSearchMovies(value)), [dispatch])
+  const onSearchActors = useCallback((value) => dispatch(actionsActors.initSearchActors(value)), [dispatch])
   
   const pathes = {
     '/actors': (event) => onSearchActors(event.target.value),

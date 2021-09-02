@@ -52,8 +52,8 @@ const Cards = React.memo(props => {
   //   return state.movies.search
   // })
 
-  const onFetchMovies = useCallback(() => dispatch(actions.initFetchMovies()), [dispatch, page])
-  // const onCleanMovies = useCallback(() => dispatch(actions.cleanMovies()), [dispatch])
+  const onFetchMovies = useCallback(() => dispatch(actions.initFetchMovies(page)), [dispatch, page])
+  const onCleanMovies = useCallback(() => dispatch(actions.cleanMovies()), [dispatch])
   // const onSearchMovies = useCallback((value) => dispatch(actions.searchMovies(value)), [dispatch])
   
   useEffect(() => {
@@ -61,10 +61,10 @@ const Cards = React.memo(props => {
       onFetchMovies(page)
     }, 1000)
     
-    // return  () => {
-    //   onCleanMovies()
-    // }
-  }, [onFetchMovies, /*onCleanMovies,*/ page]);
+    return  () => {
+      onCleanMovies()
+    }
+  }, [onFetchMovies, onCleanMovies, page]);
 
   let history = useHistory();
 

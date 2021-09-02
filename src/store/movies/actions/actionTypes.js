@@ -7,4 +7,6 @@ export const FETCH_MOVIE_CARD = 'FETCH_MOVIE_CARD';
 export const SET_MOVIE_CARD = 'SET_MOVIE_CARD';
 export const CLEAN_MOVIE_CARD = 'CLEAN_MOVIE_CARD';
 
-export const SEARCH_VALUE = 'SEARCH_VALUE'
+export const INIT_SEARCH_MOVIES = 'INIT_SEARCH_MOVIES';
+export const SEARCH_VALUE = 'SEARCH_VALUE';
+

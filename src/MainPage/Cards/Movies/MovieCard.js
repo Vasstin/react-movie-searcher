@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import * as actions from '../../../store/actions/index'
+import * as actions from '../../../store/movies/actions/index'
 import DetailPage from '../DetailPage';
 
 
@@ -13,7 +13,7 @@ const MovieCard = props => {
     return state.movies.movieCard
   })
   const { id } = props.location.state
-  const onFetchMovieCard = useCallback(() => dispatch(actions.fetchMovieCard(id)), [dispatch, id])
+  const onFetchMovieCard = useCallback(() => dispatch(actions.getMovieCard(id)), [dispatch, id])
   const onCleanMovieCard = useCallback(() => dispatch(actions.cleanMovieCard()), [dispatch])
 
   useEffect(() => {

@@ -6,11 +6,12 @@ import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga'
 //import thunk from 'redux-thunk'
 
-import { watchFetchMovies } from './store/movies/sagas/sagas'
+import watchMovies from './store/movies/sagas/sagas'
+import watchActors from './store/actors/sagas/sagas';
 import './index.css';
 import App from './App';
-import moviesReducer from './store/reducers/moviesReducer';
-import actorsReducer from './store/reducers/actorsReducer';
+import moviesReducer from './store/movies/reducers/moviesReducer';
+import actorsReducer from './store/actors/reducers/actorsReducer';
 
 const rootReducer = combineReducers({
   movies: moviesReducer,
@@ -29,7 +30,9 @@ const store = createStore(
   rootReducer,
   composeEnhancers(applyMiddleware(sagaMiddleware)) 
 )
-sagaMiddleware.run(watchFetchMovies)
+sagaMiddleware.run(watchMovies)
+sagaMiddleware.run(watchActors)
+
 
 const app = (
   <Provider store = {store}>

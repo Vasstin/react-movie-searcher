@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import * as actions from '../../../store/actions/index'
+import * as actions from '../../../store/actors/actions/index'
 import DetailPage from '../DetailPage';
 
 
@@ -14,7 +14,7 @@ const ActorCard = props => {
   })
   
   const { id } = props.location.state
-  const onFetchActorCard = useCallback(() => dispatch(actions.fetchActorCard(id)), [dispatch, id])
+  const onFetchActorCard = useCallback(() => dispatch(actions.getActorCard(id)), [dispatch, id])
   const onCleanActorCard = useCallback(() => dispatch(actions.cleanActorCard()), [dispatch])
 
   useEffect(() => {

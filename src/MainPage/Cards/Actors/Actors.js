@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 
 import NewCard from '../NewCard';
-import * as actions from '../../../store/actions/index'
+import * as actions from '../../../store/actors/actions/index'
 import PagePagination from '../../../utility/PagePagination';
 import Spinner from '../../../utility/Spinner'
 // import Navigation from '../../Navigation/Navigation'
@@ -50,7 +50,7 @@ const Cards = React.memo(props => {
     return state.actors.totalPages
   })
 
-  const onFetchActors = useCallback(() => dispatch(actions.fetchActors(page)), [dispatch, page])
+  const onFetchActors = useCallback(() => dispatch(actions.initFetchActors(page)), [dispatch, page])
   const onCleanActors = useCallback(() => dispatch(actions.cleanActors()), [dispatch])
 
   let history = useHistory();

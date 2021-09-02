@@ -1,8 +1,10 @@
 export {
-  fetchMovies,
   initFetchMovies,
-  // fetchMovieCard,
+  getMovieCard,
+  initSearchMovies,
+  fetchMovies,
+  fetchMovieCard,
   cleanMovies,
-  // cleanMovieCard,
-  // searchMovies
+  cleanMovieCard,
+  searchMovies
 } from './movies'
