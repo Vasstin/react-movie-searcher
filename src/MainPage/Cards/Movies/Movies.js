@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Cards = React.memo(props => {
+const Movies = React.memo(props => {
   const classes = useStyles();
   const dispatch = useDispatch()
 
@@ -52,7 +52,7 @@ const Cards = React.memo(props => {
   //   return state.movies.search
   // })
 
-  const onFetchMovies = useCallback(() => dispatch(actions.initFetchMovies(page)), [dispatch, page])
+  const onFetchMovies = useCallback((page) => dispatch(actions.initFetchMovies(page)), [dispatch])
   const onCleanMovies = useCallback(() => dispatch(actions.cleanMovies()), [dispatch])
   // const onSearchMovies = useCallback((value) => dispatch(actions.searchMovies(value)), [dispatch])
   
@@ -72,32 +72,32 @@ const Cards = React.memo(props => {
     history.push("/movies/" + id, {id});
   }
 
-  let moviesMap = (
-    <div>
-      <div className = {classes.root}>
-         {movies.map(item => {
-           return (
-              <NewCard 
-                data = {item} 
-                title = {item.title} 
-                cardImage = {item.poster_path} 
-                key = {item.id}
-                personid = {item.id}
-                redirect = {() => handleClick(item.id)} 
-              />)
-           })
-         }
-       </div>
-       <PagePagination 
-         page = {page} 
-         count={pages} 
-         changer = {handleChange} 
-       />
-    </div>
-  )
+  let moviesMap = <Spinner/> 
 
-  if(movies.length  === 0) {
-    moviesMap = <Spinner/>
+  if(movies.length  > 0) {
+    moviesMap = (
+      <div>
+        <div className = {classes.root}>
+           {movies.map(item => {
+             return (
+                <NewCard 
+                  data = {item} 
+                  title = {item.title} 
+                  cardImage = {item.poster_path} 
+                  key = {item.id}
+                  personid = {item.id}
+                  redirect = {() => handleClick(item.id)} 
+                />)
+             })
+           }
+         </div>
+         <PagePagination 
+           page = {page} 
+           count={pages} 
+           changer = {handleChange} 
+         />
+      </div>
+    )
   } 
     return (
      <div>
@@ -107,4 +107,4 @@ const Cards = React.memo(props => {
 });
 
 
-export default Cards;
+export default Movies;

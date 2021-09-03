@@ -13,15 +13,15 @@ const MovieCard = props => {
     return state.movies.movieCard
   })
   const { id } = props.location.state
-  const onFetchMovieCard = useCallback(() => dispatch(actions.getMovieCard(id)), [dispatch, id])
+  const onFetchMovieCard = useCallback((id) => dispatch(actions.getMovieCard(id)), [dispatch])
   const onCleanMovieCard = useCallback(() => dispatch(actions.cleanMovieCard()), [dispatch])
 
   useEffect(() => {
-    onFetchMovieCard()
+    onFetchMovieCard(id)
     return  () => {
       onCleanMovieCard()
     }
-  }, [onFetchMovieCard, onCleanMovieCard])
+  }, [onFetchMovieCard, onCleanMovieCard, id])
   return (
     <DetailPage 
       title = {movieCard.title} 

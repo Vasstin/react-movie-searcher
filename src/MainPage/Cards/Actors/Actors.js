@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Cards = React.memo(props => {
+const Actors = React.memo(props => {
   const classes = useStyles();
 
   const [page, setPage] = useState(1);
@@ -50,7 +50,7 @@ const Cards = React.memo(props => {
     return state.actors.totalPages
   })
 
-  const onFetchActors = useCallback(() => dispatch(actions.initFetchActors(page)), [dispatch, page])
+  const onFetchActors = useCallback((page) => dispatch(actions.initFetchActors(page)), [dispatch])
   const onCleanActors = useCallback(() => dispatch(actions.cleanActors()), [dispatch])
 
   let history = useHistory();
@@ -69,30 +69,30 @@ const Cards = React.memo(props => {
     }
   }, [onFetchActors, onCleanActors, page]);
 
-  let actorsMap = (
-    <div>
-      <div className = {classes.root}>
-        {actors.map(item => {
-          return <NewCard 
-          data = {item} 
-          title = {item.title ?? item.name} 
-          cardImage = {item.profile_path} 
-          key = {item.id}
-          personid = {item.id}
-          redirect = {() => handleClick(item.id)}
-        />
-      })}
-      </div>
-        <PagePagination 
-          page = {page} 
-          count={pages} 
-          changer = {handleChange} 
-        />
-      </div>
-  )
+  let actorsMap = <Spinner/>
 
-  if(actors.length  === 0) {
-    actorsMap = <Spinner/>
+  if(actors.length  > 0) {
+    actorsMap = (
+      <div>
+        <div className = {classes.root}>
+          {actors.map(item => {
+            return <NewCard 
+            data = {item} 
+            title = {item.title ?? item.name} 
+            cardImage = {item.profile_path} 
+            key = {item.id}
+            personid = {item.id}
+            redirect = {() => handleClick(item.id)}
+          />
+        })}
+        </div>
+          <PagePagination 
+            page = {page} 
+            count={pages} 
+            changer = {handleChange} 
+          />
+        </div>
+    )
   } 
 
   return (
@@ -103,4 +103,4 @@ const Cards = React.memo(props => {
 });
 
 
-export default Cards;
+export default Actors;
