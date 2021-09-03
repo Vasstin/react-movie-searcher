@@ -2,10 +2,10 @@ export {
   initFetchActors,
   initSearchActors,
   getActorCard,
-  fetchActors,
-  fetchActorCard,
+  setActors,
+  setTotalPages,
+  setActorCard,
   cleanActors,
   cleanActorCard,
-  searchActors
 } from './actors'
 

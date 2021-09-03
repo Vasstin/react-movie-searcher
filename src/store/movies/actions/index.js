@@ -2,9 +2,9 @@ export {
   initFetchMovies,
   getMovieCard,
   initSearchMovies,
-  fetchMovies,
-  fetchMovieCard,
+  setMovies,
+  setMovieCard,
   cleanMovies,
   cleanMovieCard,
-  searchMovies
+  setTotalPages
 } from './movies'
