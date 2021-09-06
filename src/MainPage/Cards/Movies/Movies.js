@@ -44,6 +44,10 @@ const Movies = React.memo(props => {
     return state.movies.movies
   })
 
+  const isLoading = useSelector(state => {
+    return state.movies.isLoading
+  })
+
   const pages = useSelector(state => {
     return state.movies.totalPages
   })
@@ -54,17 +58,19 @@ const Movies = React.memo(props => {
 
   const onFetchMovies = useCallback((page) => dispatch(actions.initFetchMovies(page)), [dispatch])
   const onCleanMovies = useCallback(() => dispatch(actions.cleanMovies()), [dispatch])
+  const onLoading = useCallback(() => dispatch(actions.isLoading(false)), [dispatch])
   // const onSearchMovies = useCallback((value) => dispatch(actions.searchMovies(value)), [dispatch])
   
   useEffect(() => {
     setTimeout(() => {
       onFetchMovies(page)
-    }, 1000)
+    }, 500)
     
     return  () => {
       onCleanMovies()
+      onLoading(false)
     }
-  }, [onFetchMovies, onCleanMovies, page]);
+  }, [onFetchMovies, onCleanMovies, onLoading, page]);
 
   let history = useHistory();
 
@@ -72,9 +78,11 @@ const Movies = React.memo(props => {
     history.push("/movies/" + id, {id});
   }
 
-  let moviesMap = <Spinner/> 
+  let moviesMap = "";
 
-  if(movies.length  > 0) {
+  if(isLoading === false) {
+    moviesMap = <Spinner/>
+  } else {
     moviesMap = (
       <div>
         <div className = {classes.root}>
@@ -98,7 +106,7 @@ const Movies = React.memo(props => {
          />
       </div>
     )
-  } 
+  }
     return (
      <div>
        {moviesMap}

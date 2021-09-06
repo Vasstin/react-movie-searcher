@@ -7,9 +7,11 @@ import * as actionTypes from '../actions/actionTypes'
 
 
 function* fetchMovies(page) {
+  yield put(actions.isLoading(false))
   const response = yield tmdbUrl.get(`movie/popular?${apiKey}&language=en-US&page=${page.page}`)
   yield put(actions.setMovies(response.data.results))
   yield put(actions.setTotalPages(response.data.total_pages))
+  yield put(actions.isLoading(true))
 }
 
 

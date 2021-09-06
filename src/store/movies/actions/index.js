@@ -6,5 +6,6 @@ export {
   setMovieCard,
   cleanMovies,
   cleanMovieCard,
-  setTotalPages
+  setTotalPages,
+  isLoading
 } from './movies'

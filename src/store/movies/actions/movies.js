@@ -57,3 +57,10 @@ export function initSearchMovies(value, page) {
     value: value
   }
 }
+
+export function isLoading(boolean) {
+  return {
+    type: actionTypes.IS_LOADING_MOVIES,
+    payload: boolean
+  }
+}
