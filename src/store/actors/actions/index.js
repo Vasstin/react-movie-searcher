@@ -7,5 +7,6 @@ export {
   setActorCard,
   cleanActors,
   cleanActorCard,
+  isLoading
 } from './actors'
 

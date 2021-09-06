@@ -57,4 +57,10 @@ export function setTotalPages(pages) {
   }
 }
 
+export function isLoading(boolean) {
+  return {
+    type: actionTypes.IS_LOADING_ACTORS,
+    payload: boolean
+  }
+}
 

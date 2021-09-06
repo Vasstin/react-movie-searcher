@@ -5,7 +5,8 @@ const initialState = {
   actorCard: [],
   totalPages: '',
   currentPage: '',
-  search: ''
+  search: '',
+  isLoading: false
 }
 
 const actorsReducer = (state = initialState, action) => {
@@ -22,6 +23,8 @@ const actorsReducer = (state = initialState, action) => {
       return { ...state, totalPages: action.payload}
     case actionTypes.SEARCH_VALUE:
       return { ...state, search: action.payload}
+    case actionTypes.IS_LOADING_ACTORS:
+      return { ...state, isLoading: action.payload}
     default: return state
   }
 }

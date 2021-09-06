@@ -50,9 +50,14 @@ const Actors = React.memo(props => {
     return state.actors.totalPages
   })
 
+  const isLoading = useSelector(state => {
+    return state.actors.isLoading
+  })
+
   const onFetchActors = useCallback((page) => dispatch(actions.initFetchActors(page)), [dispatch])
   const onCleanActors = useCallback(() => dispatch(actions.cleanActors()), [dispatch])
-
+  const onLoading = useCallback(() => dispatch(actions.isLoading(false)), [dispatch])
+  
   let history = useHistory();
 
   function handleClick(id) {
@@ -62,16 +67,19 @@ const Actors = React.memo(props => {
   useEffect(() => {
     setTimeout(() => {
       onFetchActors(page)
-    }, 1000)
+    }, 500)
     
     return  () => {
       onCleanActors()
+      onLoading(false)
     }
-  }, [onFetchActors, onCleanActors, page]);
+  }, [onFetchActors, onCleanActors, onLoading, page]);
 
-  let actorsMap = <Spinner/>
+  let actorsMap = ""
 
-  if(actors.length  > 0) {
+  if(isLoading === false) {
+    actorsMap = <Spinner/>
+  } else {
     actorsMap = (
       <div>
         <div className = {classes.root}>
@@ -93,7 +101,7 @@ const Actors = React.memo(props => {
           />
         </div>
     )
-  } 
+  }
 
   return (
     <div>
