@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles({
   root: {
     display: "flex",
-    justifyContent: 'center',
+    //justifyContent: 'center',
     maxWidth: '80%',
     margin: 15,
     marginLeft: "auto",
